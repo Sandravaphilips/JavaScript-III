@@ -47,17 +47,23 @@
   - When pooping, the stomach should empty.
 */
 
-  function Person (name, age) {
+  function Person(name, age) {
     this.myName = name;
     this.myAge = age;
+    this.myStomach = [];
   }
-  Person.prototype.stateName = function () {
+  Person.prototype.stateName = function() {
     return `My name is ${this.name}`;
   }
-  Person.prototype.stateAge = function () {
+  Person.prototype.stateAge = function() {
     return `I am ${this.age} years old.`
   }
-  Person.pr
+  Person.prototype.eatEdibles = function() {
+    myStomach.push(this);
+  }
+  Person.prototype.poop = function() {
+    myStomach = [];
+  }
 
   // TASK 2
 
@@ -68,6 +74,22 @@
   // - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
   // - Give cars the ability to be repaired.
   // - A repaired car can be driven again.
+
+  function Car(model, name, make) {
+    this.carModel = model;
+    this.carName = name;
+    this.carMake = make;
+    this.odometer = 0;
+  }
+  Person.prototype.driveADistance = function(distance) {
+    return this.odometer += distance;
+  }
+  Person.prototype.crash = function() {
+    return `"I crashed at ${this.odometer} miles!"`
+  }
+  Person.prototype.isRepaired = function() {
+    return true;
+  }
 
   // TASK 3
 
