@@ -35,7 +35,7 @@ function Person(name, age) {
     this.myStomach = [];
   }
 
-  const babyConstructor = new Person(name, age);
+  const newConstructor = new Person('Sandra', 76);
 
 // Principle 4
 
