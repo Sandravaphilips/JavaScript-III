@@ -114,6 +114,15 @@
 
 */
 
+function LambdaProject (protypejs, thisjs, challenges) {
+  this.myPrototype = protypejs;
+  this.myThis = thisjs;
+  this.feelingGood = false;
+  this.timeSpent = 0;
+  this.timeAllocated = 14400;
+  this.myChallenges = challenges;
+}
+
 /*
 
   STRETCH TASK
