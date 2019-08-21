@@ -52,17 +52,16 @@
     this.myAge = age;
     this.myStomach = [];
   }
-  Person.prototype.stateName = function() {
-    return `My name is ${this.name}`;
+  Person.prototype.greet = function() {
+    return `My name is ${this.name}. I am ${this.age} years old.`;
   }
-  Person.prototype.stateAge = function() {
-    return `I am ${this.age} years old.`
-  }
+  
   Person.prototype.eatEdibles = function() {
-    myStomach.push(this);
+    this.myStomach.push(this);
   }
   Person.prototype.poop = function() {
-    myStomach = [];
+    this.myStomach = [];
+    return this.myStomach
   }
 
   // TASK 2
@@ -80,6 +79,7 @@
     this.carName = name;
     this.carMake = make;
     this.odometer = 0;
+    this.isRepaired = true;
   }
   Person.prototype.driveADistance = function(distance) {
     return this.odometer += distance;
@@ -87,8 +87,10 @@
   Person.prototype.crash = function() {
     return `"I crashed at ${this.odometer} miles!"`
   }
-  Person.prototype.isRepaired = function() {
-    return true;
+  Person.prototype.isRepairedOrNot = function() {
+    if (this.isRepaired) {
+      return;
+    } else return this.isRepaired = false;
   }
 
   // TASK 3
@@ -97,6 +99,12 @@
   // - Babies of course inherit the ability to greet, which can be strange.
   // - Babies should have the ability to play, which persons don't.
   // - By playing, a string is returned with some text of your choosing.
+
+  const babyConstructor = new Person(name, age);
+  babyConstructor.prototype.greet = Object.create(Person.prototype.greet);
+  babyConstructor.prototype.play = function() {
+    return `It's time to play!!`;
+  };
 
 /*  TASK 4
 
