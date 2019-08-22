@@ -45,31 +45,83 @@
   - When eating an edible, it should be pushed into a "stomach" property which is an array.
   - Give persons the ability to poop.
   - When pooping, the stomach should empty.
+*/
 
-  TASK 2
+  function Person(name, age) {
+    this.myName = name;
+    this.myAge = age;
+    this.myStomach = [];
+  }
+  Person.prototype.greet = function() {
+    return `My name is ${this.name}. I am ${this.age} years old.`;
+  }
+  
+  Person.prototype.eatEdibles = function() {
+    this.myStomach.push(this);
+  }
+  Person.prototype.poop = function() {
+    this.myStomach = [];
+    return this.myStomach
+  }
 
-  - Build a Car constructor that takes model name and make.
-  - Give cars the ability to drive a distance.
-  - By driving a car, the distance driven should be added to an "odometer" property.
-  - Give cars the ability to crash.
-  - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
-  - Give cars the ability to be repaired.
-  - A repaired car can be driven again.
+  // TASK 2
 
-  TASK 3
+  // - Build a Car constructor that takes model name and make.
+  // - Give cars the ability to drive a distance.
+  // - By driving a car, the distance driven should be added to an "odometer" property.
+  // - Give cars the ability to crash.
+  // - A crashed car can't be driven any more. Attempts return a string "I crashed at x miles!", x being the miles in the odometer.
+  // - Give cars the ability to be repaired.
+  // - A repaired car can be driven again.
 
-  - Build a Baby constructor that subclasses the Person built earlier.
-  - Babies of course inherit the ability to greet, which can be strange.
-  - Babies should have the ability to play, which persons don't.
-  - By playing, a string is returned with some text of your choosing.
+  function Car(model, name, make) {
+    this.carModel = model;
+    this.carName = name;
+    this.carMake = make;
+    this.odometer = 0;
+    this.isRepaired = true;
+  }
+  Person.prototype.driveADistance = function(distance) {
+    return this.odometer += distance;
+  }
+  Person.prototype.crash = function() {
+    return `"I crashed at ${this.odometer} miles!"`
+  }
+  Person.prototype.isRepairedOrNot = function() {
+    if (this.isRepaired) {
+      return;
+    } else return this.isRepaired = false;
+  }
 
-  TASK 4
+  // TASK 3
+
+  // - Build a Baby constructor that subclasses the Person built earlier.
+  // - Babies of course inherit the ability to greet, which can be strange.
+  // - Babies should have the ability to play, which persons don't.
+  // - By playing, a string is returned with some text of your choosing.
+
+  const babyConstructor = new Person('Karim', 5);
+  babyConstructor.prototype = Object.create(Person.prototype);
+  babyConstructor.prototype.play = function() {
+    return `It's time to play!!`;
+  };
+
+/*  TASK 4
 
   Use your imagination and come up with constructors that allow to build objects
   With amazing and original capabilities. Build 3 small ones, or a very
   complicated one with lots of state. Surprise us!
 
 */
+
+function LambdaProject (protypejs, thisjs, challenges) {
+  this.myPrototype = protypejs;
+  this.myThis = thisjs;
+  this.feelingGood = false;
+  this.timeSpent = 0;
+  this.timeAllocated = 14400;
+  this.myChallenges = challenges;
+}
 
 /*
 
@@ -115,62 +167,62 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
-  const mage = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 1,
-      height: 1,
-    },
-    healthPoints: 5,
-    name: 'Bruce',
-    team: 'Mage Guild',
-    weapons: [
-      'Staff of Shamalama',
-    ],
-    language: 'Common Tongue',
-  });
-  const swordsman = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 2,
-      height: 2,
-    },
-    healthPoints: 15,
-    name: 'Sir Mustachio',
-    team: 'The Round Table',
-    weapons: [
-      'Giant Sword',
-      'Shield',
-    ],
-    language: 'Common Tongue',
-  });
-  const archer = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 1,
-      width: 2,
-      height: 4,
-    },
-    healthPoints: 10,
-    name: 'Lilith',
-    team: 'Forest Kingdom',
-    weapons: [
-      'Bow',
-      'Dagger',
-    ],
-    language: 'Elvish',
-  });
-  console.log(mage.createdAt); // Today's date
-  console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-  console.log(swordsman.healthPoints); // 15
-  console.log(mage.name); // Bruce
-  console.log(swordsman.team); // The Round Table
-  console.log(mage.weapons); // Staff of Shamalama
-  console.log(archer.language); // Elvish
-  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  console.log(mage.takeDamage()); // Bruce took damage.
-  console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
+  // const mage = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 2,
+  //     width: 1,
+  //     height: 1,
+  //   },
+  //   healthPoints: 5,
+  //   name: 'Bruce',
+  //   team: 'Mage Guild',
+  //   weapons: [
+  //     'Staff of Shamalama',
+  //   ],
+  //   language: 'Common Tongue',
+  // });
+  // const swordsman = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 2,
+  //     width: 2,
+  //     height: 2,
+  //   },
+  //   healthPoints: 15,
+  //   name: 'Sir Mustachio',
+  //   team: 'The Round Table',
+  //   weapons: [
+  //     'Giant Sword',
+  //     'Shield',
+  //   ],
+  //   language: 'Common Tongue',
+  // });
+  // const archer = new Humanoid({
+  //   createdAt: new Date(),
+  //   dimensions: {
+  //     length: 1,
+  //     width: 2,
+  //     height: 4,
+  //   },
+  //   healthPoints: 10,
+  //   name: 'Lilith',
+  //   team: 'Forest Kingdom',
+  //   weapons: [
+  //     'Bow',
+  //     'Dagger',
+  //   ],
+  //   language: 'Elvish',
+  // });
+  // console.log(mage.createdAt); // Today's date
+  // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+  // console.log(swordsman.healthPoints); // 15
+  // console.log(mage.name); // Bruce
+  // console.log(swordsman.team); // The Round Table
+  // console.log(mage.weapons); // Staff of Shamalama
+  // console.log(archer.language); // Elvish
+  // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+  // console.log(mage.takeDamage()); // Bruce took damage.
+  // console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
